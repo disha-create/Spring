@@ -1,0 +1,24 @@
+For autowire="byType", the spring framework will find how many properties are there
+
+1) private Interface variable; only one
+	here variable is a reference type and variable is the name of variable
+2) Then it will find whats the type of the property (Interface)
+3) It will check if that type is a class or an interface
+	if interface -> a) find classes that implement the interface
+	next	     b) is there any spring bean defined for that class
+For each property repeat the above steps.
+
+For the above config, lets see autowire by construcor,
+
+<bean id="idName" class="Type" autowire="constructor">
+</bean>
+
+autowire="constructor"
+1) For a class, it wil find how many ctors are there -> for example if 2 are there
+2) start with max no of args  
+3) Interface variable , what is the type of variable
+4) Is it a class or interface -> its interface
+5) which class implements that interface , is there any bean defined for that type
+   now inject that bean into the ctor.
+
+
